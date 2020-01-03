@@ -24,6 +24,12 @@ namespace WorkingWithJson
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+           // Runtime compilation
+           //To enable runtime compilation for all environments and configuration modes:
+           //Install the Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation NuGet package.
+            
+            services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
