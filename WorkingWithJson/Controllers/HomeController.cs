@@ -6,21 +6,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WorkingWithJson.Models;
+using WorkingWithJson.Services;
 
 namespace WorkingWithJson.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly JsonFileProductService _productService;
+       // public IEnumerable<Product> Products { get; private set; }
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, JsonFileProductService productService)
         {
             _logger = logger;
+            _productService = productService;
         }
 
         public IActionResult Index()
         {
-            return View();
+           var Products = _productService.GetProducts();
+            return View(Products);
         }
 
         public IActionResult Privacy()
