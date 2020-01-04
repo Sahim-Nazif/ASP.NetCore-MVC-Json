@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WorkingWithJson.Services;
 
 namespace WorkingWithJson
 {
@@ -24,6 +25,8 @@ namespace WorkingWithJson
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddTransient<JsonFileProductService>();
 
            // Runtime compilation
            //To enable runtime compilation for all environments and configuration modes:
