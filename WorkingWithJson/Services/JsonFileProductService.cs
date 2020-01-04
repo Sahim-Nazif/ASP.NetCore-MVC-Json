@@ -38,5 +38,26 @@ namespace WorkingWithJson.Services
                     });
             }
         }
+
+        public void AddRating(string productId, int rating)
+        {
+            var products = GetProducts();
+            var query = products.First(p => p.Id == productId);
+            if (query.Ratings==null)
+            {
+                //if it is null. then will initialize and set it
+                query.Ratings = new int[] { rating };
+            }
+            else
+            {
+                //if there are rating then will do the following
+                var ratings = query.Ratings.ToList();
+                ratings.Add(rating);
+                query.Ratings = ratings.ToArray();
+
+            }
+
+
+        }
     }
 }
